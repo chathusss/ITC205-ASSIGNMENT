@@ -10,7 +10,7 @@ public class BorrowBookControl {
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE State;
 	
-	private List<book> PENDING;
+	private List<book> pending; // Change  to PENDING to pending MP
 	private List<loan> COMPLETED;
 	private book BOOK;
 	
