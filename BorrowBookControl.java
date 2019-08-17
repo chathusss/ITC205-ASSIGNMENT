@@ -15,7 +15,7 @@ public class BorrowBookControl {
 	private book BOOK;
 	
 	
-	public BorrowBookControl() {
+	public borrowBookControl()  { //Edit method name as camelBack
 		this.LIBRARY = LIBRARY.INSTANCE();
 		State = CONTROL_STATE.INITIALISED;
 	}
@@ -91,7 +91,7 @@ public class BorrowBookControl {
 	}
 
 
-	public void Commit_LOans() {
+	public void commitLoans() {
 		if (!State.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
