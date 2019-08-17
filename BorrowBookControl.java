@@ -31,11 +31,11 @@ public class BorrowBookControl {
 	}
 
 		
-	public void Swiped(int MEMMER_ID) {
+	public void swiped(int memberId) {//Change variable name to MEMMER_ID to memberId by CSS
 		if (!State.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		M = LIBRARY.MEMBER(MEMMER_ID);
+		M = LIBRARY.MEMBER(memberId);
 		if (M == null) {
 			UI.Display("Invalid memberId");
 			return;
@@ -50,7 +50,7 @@ public class BorrowBookControl {
 			UI.Set_State(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
-	public void Scanned(int bookId) {
+	public void scanned(int bookId) { //change method name Scanned to scanned 
 		BOOK = null;
 		if (!State.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
