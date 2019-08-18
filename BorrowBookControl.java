@@ -15,24 +15,24 @@ public class BorrowBookControl {
 	private Book book;
 	
 	
-	public getBorrowBookControl()  { //Edit method name as camelBack
+	public BorrowBookControl()  { //Edit method name as camelBack
 		this.library = library.INSTANCE();
-		State = ControlState.INITIALISED;
+		state = ControlState.INITIALISED;
 	}
 	
 
 	public void setUI(BorrowBookUI ui) {
-		if (!State.equals(ControlState.INITIALISED)) 
+		if (!state.equals(ControlState.INITIALISED)) 
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 			
 		this.ui = ui;
 		ui.Set_State(BorrowBookUI.UI_STATE.READY);
-		State = ControlState.READY;//Replace with ControlState by CSS		
+		state = ControlState.READY;//Replace with ControlState by CSS		
 	}
 
 		
 	public void swiped(int memberId) {//Change variable name to MEMMER_ID to memberId by CSS
-		if (!State.equals(ControlState.READY)) //Replace with ControlState by CSS
+		if (!state.equals(ControlState.READY)) //Replace with ControlState by CSS
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
 		m = library.MEMBER(memberId);
@@ -42,8 +42,8 @@ public class BorrowBookControl {
 		}
 		if (library.MEMBER_CAN_BORROW(m)) {
 			PENDING = new ArrayList<>();
-			UI.Set_State(BorrowBookUI.UI_STATE.SCANNING);
-			State = ControlState.SCANNING; }
+			ui.Set_State(BorrowBookUI.UI_STATE.SCANNING);
+			state = ControlState.SCANNING; }
 		else 
 		{
 			ui.Display("Member cannot borrow at this time");
@@ -52,7 +52,7 @@ public class BorrowBookControl {
 	
 	public void scanned(int bookId) { //change method name Scanned to scanned  by CSS
 		book = null;
-		if (!State.equals(ControlState.SCANNING)) {
+		if (!state.equals(ControlState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
 		book = library.Book(bookId);
@@ -86,13 +86,13 @@ public class BorrowBookControl {
 			}
 			COMPLETED = new ArrayList<loan>();
 			ui.Set_State(BorrowBookUI.UI_STATE.FINALISING);
-			State = ControlState.FINALISING;
+			state = ControlState.FINALISING;
 		}
 	}
 
 
 	public void commitLoans() {
-		if (!State.equals(ControlState.FINALISING)) {
+		if (!state.equals(ControlState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		for (book B : pending) {
@@ -104,13 +104,13 @@ public class BorrowBookControl {
 			UI.Display(LOAN.toString());
 		}
 		ui.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
-		State = ControlState.COMPLETED;
+		state = ControlState.COMPLETED;
 	}
 
 	
 	public void cancel() {
 		ui.Set_State(BorrowBookUI.UI_STATE.CANCELLED);
-		State = ControlState.CANCELLED;
+		state = ControlState.CANCELLED;// Change State to state
 	}
 	
 	
