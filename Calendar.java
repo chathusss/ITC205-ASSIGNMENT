@@ -11,7 +11,7 @@ public class Calendar {
 		calendar = java.util.Calendar.getInstance();
 	}
 	
-	public static Calendar Instance() {
+	public static Calendar Instance() {//Set Method Name INSTANCE to INSTANCE
 		if (self == null) {
 			self = new Calendar();
 		}
@@ -22,7 +22,7 @@ public class Calendar {
 		calendar.add(java.util.Calendar.DATE, days);		
 	}
 	
-	public synchronized void SetDate(Date date) {
+	public synchronized void SetDate(Date date) {//Fix Method Name SET_DATE to SetDate
 		try {
 			calendar.setTime(date);
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  

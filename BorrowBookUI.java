@@ -29,7 +29,7 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void SetState(UiState STATE) {
+	public void SetState(UiState STATE) {// Fix Method Name By CSS
 		this.state = STATE;
 	}
 
@@ -109,7 +109,7 @@ public class BorrowBookUI {
 	}
 
 
-	public void Display(Object object) {
+	public void Display(Object object) { //change Method display to Dispaly by CSS
 		output(object);		
 	}
 
