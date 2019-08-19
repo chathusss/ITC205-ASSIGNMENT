@@ -9,12 +9,12 @@ public class Loan implements Serializable {//Edit Class Name
 	
 	private int id;
 	private book book;
-	private member member;
+	private Member member;
 	private Date date;
 	private LoanState state;
 
 	
-	public Loan(int loanId, book book, member member, Date dueDate) {
+	public Loan(int loanId, book book, Member member, Date dueDate) {
 		this.id = loanId;
 		this.book = book;
 		this.member = member;
@@ -25,7 +25,7 @@ public class Loan implements Serializable {//Edit Class Name
 	
 	public void checkOverDue() {
 		if (state == LoanState.CURRENT &&
-			Calendar.Instance().Date().after(date)) {//Edit Calling Method Name
+			Calendar.Instance().date().after(date)) {//Edit Calling Method Name
 			this.state = LoanState.OVER_DUE;			
 		}
 	}
@@ -51,8 +51,8 @@ public class Loan implements Serializable {//Edit Class Name
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Loan:  ").append(id).append("\n")
-		  .append("  Borrower ").append(member.GeT_ID()).append(" : ")
-		  .append(member.Get_LastName()).append(", ").append(member.Get_FirstName()).append("\n")
+		  .append("  Borrower ").append(member.getId()).append(" : ")
+		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")
 		  .append("  Book ").append(book.ID()).append(" : " )
 		  .append(book.TITLE()).append("\n")
 		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
@@ -61,7 +61,7 @@ public class Loan implements Serializable {//Edit Class Name
 	}
 
 
-	public member Member() {
+	public Member member() {
 		return member;
 	}
 

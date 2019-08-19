@@ -18,11 +18,11 @@ public class Calendar {
 		return self;
 	}
 	
-	public void IncrementDate(int days) {
+	public void incrementDate(int days) {
 		calendar.add(java.util.Calendar.DATE, days);		
 	}
 	
-	public synchronized void SetDate(Date date) {//Fix Method Name SET_DATE to SetDate
+	public synchronized void setDate(Date date) {//Fix Method Name SET_DATE to SetDate
 		try {
 			calendar.setTime(date);
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
@@ -34,7 +34,7 @@ public class Calendar {
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date Date() {
+	public synchronized Date date() {
 		try {
 	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
 	        calendar.set(java.util.Calendar.MINUTE, 0);  
@@ -47,17 +47,17 @@ public class Calendar {
 		}	
 	}
 
-	public synchronized Date DueDate(int loanPeriod) {//Edit Mathod Name As CamelBack by CSS
-		Date Now = Date();
+	public synchronized Date dueDate(int loanPeriod) {//Edit Mathod Name As CamelBack by CSS
+		Date Now = date();
 		calendar.add(java.util.Calendar.DATE, loanPeriod);
 		Date DueDate = calendar.getTime();
 		calendar.setTime(Now);
 		return DueDate;
 	}
 	
-	public synchronized long GetDaysDifference(Date targetDate) {//Edit Mathod Name As CamelBack by CSS
+	public synchronized long getDaysDifference(Date targetDate) {//Edit Mathod Name As CamelBack by CSS
 		
-		long giffMillis = Date().getTime() - targetDate.getTime();
+		long giffMillis = date().getTime() - targetDate.getTime();
 	    long diffDays = TimeUnit.DAYS.convert(giffMillis, TimeUnit.MILLISECONDS);
 	    return diffDays;
 	}
