@@ -7,7 +7,7 @@ public class FixBookUI {
 
 	private FixBookControl control;//change CoNtRoL to control
 	private Scanner input;
-	private UiState state;
+	private UiState state;//change UI_STATE to UiState by MP
 
 	
 	public FixBookUI(FixBookControl control) {
@@ -18,12 +18,12 @@ public class FixBookUI {
 	}
 
 
-	public void Set_State(UiState state) {
+	public void SetState(UiState state) {
 		this.state = state;
 	}
 
 	
-	public void RuN() {
+	public void Run() {
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
@@ -33,7 +33,7 @@ public class FixBookUI {
 			case READY:
 				String Book_STR = input("Scan Book (<enter> completes): ");
 				if (Book_STR.length() == 0) {
-					control.scanningComplete();//fixed method name
+					control.ScanningComplete();//fixed method name
 				}
 				else {
 					try {
@@ -80,7 +80,7 @@ public class FixBookUI {
 	}
 	
 
-	public void display(Object object) {
+	public void Display(Object object) {
 		output(object);
 	}
 	
