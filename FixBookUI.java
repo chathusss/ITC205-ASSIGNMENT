@@ -18,12 +18,12 @@ public class FixBookUI {
 	}
 
 
-	public void SetState(UiState state) {
+	public void setState(UiState state) { //Fix Methods Name by Prabashi
 		this.state = state;
 	}
 
 	
-	public void Run() {
+	public void run() {//Fix Methods Name by Prabashi
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
@@ -33,12 +33,12 @@ public class FixBookUI {
 			case READY:
 				String Book_STR = input("Scan Book (<enter> completes): ");
 				if (Book_STR.length() == 0) {
-					control.ScanningComplete();//fixed method name
+					control.scanningComplete();//fixed method name
 				}
 				else {
 					try {
 						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						control.BookScanned(Book_ID);
+						control.bookScanned(Book_ID);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -52,7 +52,7 @@ public class FixBookUI {
 				if (AnS.toUpperCase().equals("Y")) {
 					FiX = true;
 				}
-				control.FixBook(FiX);
+				control.fixBook(FiX);
 				break;
 								
 			case COMPLETED:
@@ -69,7 +69,7 @@ public class FixBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String input(String prompt) {//Fix Methods Name by Prabashi
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
@@ -80,7 +80,7 @@ public class FixBookUI {
 	}
 	
 
-	public void Display(Object object) {
+	public void display(Object object) {//Fix Methods Name by Prabashi
 		output(object);
 	}
 	
