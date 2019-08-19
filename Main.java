@@ -164,7 +164,7 @@ public class Main {
 
 
 	private static void fixBooks() {//Edit  Method Name Auther Prabashi
-		new FixBookUI(new FixBookControl()).Run();		
+		new FixBookUI(new FixBookControl()).run();		
 	}
 
 
@@ -173,7 +173,7 @@ public class Main {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
 			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			output(SDF.format(CAL.date()));
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
