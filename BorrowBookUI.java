@@ -7,14 +7,14 @@ public class BorrowBookUI {
 
 	private BorrowBookControl control;//change the variable name CONTROL to control
 	private Scanner input;
-	private UI_STATE state;//change the variable StaTe to state
+	private UiState state;//change the variable StaTe to state
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;//Replace enum
-		control.setUI(this);
+		control.SetUi(this);
 	}
 
 	
@@ -29,12 +29,12 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void setState(UiState STATE) {
+	public void SetState(UiState STATE) {
 		this.state = STATE;
 	}
 
 	
-	public void run() {
+	public void Run() {//Fix Method name as a Guidline by CSS
 		output("Borrow Book Use Case UI\n");
 		
 		while (true) {
@@ -49,12 +49,12 @@ public class BorrowBookUI {
 			case READY:
 				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
 				if (MEM_STR.length() == 0) {
-					CONTROL.cancel();
+					control.cancel();
 					break;
 				}
 				try {
 					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-					CONTROL.Swiped(Member_ID);
+                                    control.Swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,19 +64,19 @@ public class BorrowBookUI {
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				control.cancel();
 				break;
 			
 				
 			case SCANNING:
 				String Book_Str = input("Scan Book (<enter> completes): ");
 				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+					control.Complete();
 					break;
 				}
 				try {
 					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					control.Scanned(BiD);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -87,10 +87,10 @@ public class BorrowBookUI {
 			case FINALISING:
 				String Ans = input("Commit loans? (Y/N): ");
 				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+					control.cancel();
 					
 				} else {
-					CONTROL.Commit_LOans();
+					control.CommitLoans();//Replace Correct Method Name by CSS
 					input("Press <any key> to complete ");
 				}
 				break;
@@ -103,7 +103,7 @@ public class BorrowBookUI {
 				
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);			
 			}
 		}		
 	}
