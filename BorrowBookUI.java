@@ -14,7 +14,7 @@ public class BorrowBookUI {
 		this.control = control;
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;//Replace enum
-		control.SetUi(this);
+		control.setUi(this);
 	}
 
 	
@@ -29,12 +29,12 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void SetState(UiState STATE) {// Fix Method Name By CSS
+	public void setState(UiState STATE) {// Fix Method Name By CSS
 		this.state = STATE;
 	}
 
 	
-	public void Run() {//Fix Method name as a Guidline by CSS
+	public void run() {//Fix Method name as a Guidline by CSS
 		output("Borrow Book Use Case UI\n");
 		
 		while (true) {
@@ -54,7 +54,7 @@ public class BorrowBookUI {
 				}
 				try {
 					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-                                    control.Swiped(Member_ID);
+                                    control.swiped(Member_ID);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -76,7 +76,7 @@ public class BorrowBookUI {
 				}
 				try {
 					int BiD = Integer.valueOf(Book_Str).intValue();
-					control.Scanned(BiD);
+					control.scanned(BiD);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -90,7 +90,7 @@ public class BorrowBookUI {
 					control.cancel();
 					
 				} else {
-					control.CommitLoans();//Replace Correct Method Name by CSS
+					control.commitLoans();//Replace Correct Method Name by CSS
 					input("Press <any key> to complete ");
 				}
 				break;

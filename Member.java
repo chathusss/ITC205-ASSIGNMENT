@@ -45,29 +45,29 @@ public class Member implements Serializable { //Change Class Name member to Memb
 	}
 
 	
-	public int get_ID() {
+	public int getId() {
 		return id;
 	}
 
 	
-	public List<loan> GeT_LoAnS() {
-		return new ArrayList<loan>(LNS.values());
+	public List<Loan> getLoans() {
+		return new ArrayList<Loan>(LNS.values());
 	}
 
 	
-	public int Number_Of_Current_Loans() {
+	public int numberOfCurrentLoans() {//Edit Method Name by CSS
 		return LNS.size();
 	}
 
 	
-	public double Fines_OwEd() {
+	public double finesOwed() {//Edit Method Name by CSS
 		return fines;//Replace Edited Variables Name by CSS
 	}
 
 	
-	public void Take_Out_Loan(loan loan) {
-		if (!LNS.containsKey(loan.ID())) {
-			LNS.put(loan.ID(), loan);
+	public void takeOutLoan(Loan loan) {//Edit Method Name by CSS
+		if (!LNS.containsKey(loan.id())) {
+			LNS.put(loan.id(), loan);
 		}
 		else {
 			throw new RuntimeException("Duplicate loan added to member");
@@ -75,21 +75,21 @@ public class Member implements Serializable { //Change Class Name member to Memb
 	}
 
 	
-	public String Get_LastName() {
+	public String getLastName() {//Edit Method Name by CSS
 		return lastName;//Replace Edited Variables Name by CSS
 	}
 
 	
-	public String Get_FirstName() {
+	public String getFirstName() {//Edit Method Name by CSS
 		return firstName;//Replace Edited Variables Name by CSS
 	}
 
 
-	public void Add_Fine(double fine) {
+	public void addFine(double fine) {//Edit Method Name by CSS
 		fines += fine;//Replace Edited Variables Name by CSS
 	}
 	
-	public double Pay_Fine(double amount) { //Edit Variables Name AmOuNt to amount
+	public double payFine(double amount) { //Edit Variables Name AmOuNt to amount
 		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
@@ -105,9 +105,9 @@ public class Member implements Serializable { //Change Class Name member to Memb
 	}
 
 
-	public void dIsChArGeLoAn(loan loan) {
-		if (LNS.containsKey(loan.ID())) {
-			LNS.remove(loan.ID());
+	public void dischargeLoan(Loan loan) { //Edit Method Name by CSS
+		if (LNS.containsKey(loan.id())) {
+			LNS.remove(loan.id());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
