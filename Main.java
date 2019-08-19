@@ -41,10 +41,10 @@ public class Main {
 		try {			
 			IN = new Scanner(System.in);
 			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
+			CAL = Calendar.Instance();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (member m : LIB.MEMBERS()) {
+			for (Member m : LIB.MEMBERS()) {
 				output(m);
 			}
 			output(" ");
@@ -64,43 +64,43 @@ public class Main {
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					AddMember();
+					addMember();
 					break;
 					
 				case "LM": 
-					Members();
+					members();
 					break;
 					
 				case "B": 
-					AddBook();
+					addBook();
 					break;
 					
 				case "LB": 
-					Books();
+					books();
 					break;
 					
 				case "FB": 
-					FixBooks();
+					fixBooks();
 					break;
 					
 				case "L": 
-					BorrowBook();
+					borrowBook();
 					break;
 					
 				case "R": 
-					ReturnBook();
+					returnBook();
 					break;
 					
 				case "LL": 
-					CurrentLoans();
+					currentLoans();
 					break;
 					
 				case "P": 
-					GetFine();
+					getFine();
 					break;
 					
 				case "T": 
-					IncrementDate();
+					incrementDate();
 					break;
 					
 				case "Q": 
@@ -121,21 +121,21 @@ public class Main {
 	}	
 
 	
-	private static void GetFine() {//Fix the FINE to GetFine by MP
+	private static void getFine() {//Fix the FINE to GetFine by MP
 		new PayFineUI(new PayFineControl()).RuN();		
 	}
 
 
-	private static void CurrentLoans() {//Fix CURRENT_LOAN to CurrentLoans by MP
+	private static void currentLoans() {//Fix CURRENT_LOAN to CurrentLoans by MP
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (Loan loan : LIB.CurrentLoans()) {
 			output(loan + "\n");
 		}		
 	}
 
 
 
-	private static void Books() { //change method name BOOKS to Books by MP
+	private static void books() { //change method name BOOKS to Books by MP
 		output("");
 		for (book book : LIB.BOOKS()) {
 			output(book + "\n");
@@ -144,31 +144,31 @@ public class Main {
 
 
 
-	private static void Members() {//Edit Method Name MEMBERS to Members by MP
+	private static void members() {//Edit Method Name MEMBERS to members by MP
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (Member member : LIB.MEMBERS()) {
 			output(member + "\n");
 		}		
 	}
 
 
 
-	private static void BorrowBook() { //Edit Method Name by MP
+	private static void borrowBook() { //Edit Method Name by MP
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void ReturnBook() {//Edit  Method Name Auther Prabashi
+	private static void returnBook() {//Edit  Method Name Auther Prabashi
 		new ReturnBookUI(new ReturnBookControl()).RuN();		
 	}
 
 
-	private static void FixBooks() {//Edit  Method Name Auther Prabashi
+	private static void fixBooks() {//Edit  Method Name Auther Prabashi
 		new FixBookUI(new FixBookControl()).Run();		
 	}
 
 
-	private static void IncrementDate() {//Edit  Method Name Auther Prabashi
+	private static void incrementDate() {//Edit  Method Name Auther Prabashi
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
@@ -181,7 +181,7 @@ public class Main {
 	}
 
 
-	private static void AddBook() {//Edit  Method Name Auther Prabashi
+	private static void addBook() {//Edit  Method Name Auther Prabashi
 		
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
@@ -192,13 +192,13 @@ public class Main {
 	}
 
 	
-	private static void AddMember() {//Edit  Method Name Auther Prabashi
+	private static void addMember() {//Edit  Method Name Auther Prabashi
 		try {
 			String LN = input("Enter last name: ");
 			String FN  = input("Enter first name: ");
 			String EM = input("Enter email: ");
 			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
+			Member M = LIB.Add_mem(LN, FN, EM, PN);
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
