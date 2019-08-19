@@ -126,7 +126,7 @@ public class Main {
 	}
 
 
-	private static void CurrentLoans() {//Fix CURRENT_LOAN to CurrentLoans
+	private static void CurrentLoans() {//Fix CURRENT_LOAN to CurrentLoans by MP
 		output("");
 		for (loan loan : LIB.CurrentLoans()) {
 			output(loan + "\n");
@@ -135,7 +135,7 @@ public class Main {
 
 
 
-	private static void Books() { 
+	private static void Books() { //change method name BOOKS to Books by MP
 		output("");
 		for (book book : LIB.BOOKS()) {
 			output(book + "\n");
@@ -144,7 +144,7 @@ public class Main {
 
 
 
-	private static void Members() {
+	private static void Members() {//Edit Method Name MEMBERS to Members by MP
 		output("");
 		for (member member : LIB.MEMBERS()) {
 			output(member + "\n");
@@ -153,22 +153,22 @@ public class Main {
 
 
 
-	private static void BorrowBook() {
+	private static void BorrowBook() { //Edit Method Name by MP
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void ReturnBook() {
+	private static void ReturnBook() {//Edit  Method Name Auther Prabashi
 		new ReturnBookUI(new ReturnBookControl()).RuN();		
 	}
 
 
-	private static void FixBooks() {
+	private static void FixBooks() {//Edit  Method Name Auther Prabashi
 		new FixBookUI(new FixBookControl()).Run();		
 	}
 
 
-	private static void IncrementDate() {
+	private static void IncrementDate() {//Edit  Method Name Auther Prabashi
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
@@ -181,7 +181,7 @@ public class Main {
 	}
 
 
-	private static void AddBook() {
+	private static void AddBook() {//Edit  Method Name Auther Prabashi
 		
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
@@ -192,7 +192,7 @@ public class Main {
 	}
 
 	
-	private static void AddMember() {
+	private static void AddMember() {//Edit  Method Name Auther Prabashi
 		try {
 			String LN = input("Enter last name: ");
 			String FN  = input("Enter first name: ");
