@@ -198,8 +198,8 @@ public class Main {
 			String fn  = input("Enter first name: "); ////change variable FN to fn Author Prabashi
 			String em = input("Enter email: "); //change variable EM to em Author Prabashi
 			int pn = Integer.valueOf(input("Enter phone number: ")).intValue(); //change variable PN to pn Author Prabashi
-			Member M = LIB.Add_mem(ln, fn, em, pn); //change variable Author Prabashi
-			output("\n" + M + "\n");
+			Member m = LIB.Add_mem(ln, fn, em, pn); //change variable Author Prabashi
+			output("\n" + m + "\n");
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid phone number\n");
