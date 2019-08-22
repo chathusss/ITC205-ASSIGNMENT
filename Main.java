@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static library LIB;
+	private static Scanner in; //Change IN to in Author Prabashi
+	private static library lib; // change LIB to lib by Prabashi
 	private static String MENU;
 	private static Calendar CAL;
 	private static SimpleDateFormat SDF;
 	
 	
-	private static String Get_menu() {
+	private static String GetMenu() {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\nLibrary Main Menu\n\n")
@@ -39,68 +39,68 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
+			in = new Scanner(System.in); //Change IN to in Author Prabashi
+			lib = library.INSTANCE(); // change LIB to lib by Prabashi
+			CAL = Calendar.Instance();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (member m : LIB.MEMBERS()) {
+			for (Member m : lib.MEMBERS()) {  // change LIB to lib by Prabashi
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book b : lib.BOOKS()) {  // change LIB to lib by Prabashi
 				output(b);
 			}
 						
-			MENU = Get_menu();
+			MENU = GetMenu();
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
+				output("\n" + SDF.format(CAL.date()));
 				String c = input(MENU);
 				
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					ADD_MEMBER();
+					addMember();
 					break;
 					
 				case "LM": 
-					MEMBERS();
+					members();
 					break;
 					
 				case "B": 
-					ADD_BOOK();
+					addBook();
 					break;
 					
 				case "LB": 
-					BOOKS();
+					books();
 					break;
 					
 				case "FB": 
-					FIX_BOOKS();
+					fixBooks();
 					break;
 					
 				case "L": 
-					BORROW_BOOK();
+					borrowBook();
 					break;
 					
 				case "R": 
-					RETURN_BOOK();
+					returnBook();
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();
+					currentLoans();
 					break;
 					
 				case "P": 
-					FINES();
+					getFine();
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();
+					incrementDate();
 					break;
 					
 				case "Q": 
@@ -120,59 +120,60 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void FINES() {
-		new PayFineUI(new PayFineControl()).RuN();		
+	
+	private static void getFine() {//Fix the FINE to GetFine by MP
+		new PayFineUI(new PayFineControl()).run();		
 	}
 
 
-	private static void CURRENT_LOANS() {
+	private static void currentLoans() {//Fix CURRENT_LOAN to CurrentLoans by MP
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (Loan loan : lib.currentLoans()) {  // change LIB to lib by Prabashi
 			output(loan + "\n");
 		}		
 	}
 
 
 
-	private static void BOOKS() {
+	private static void books() { //change method name BOOKS to Books by MP
 		output("");
-		for (book book : LIB.BOOKS()) {
+		for (book book : lib.books()) {  // change LIB to lib by Prabashi
 			output(book + "\n");
 		}		
 	}
 
 
 
-	private static void MEMBERS() {
+	private static void members() {//Edit Method Name MEMBERS to members by MP
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (Member member : lib.members()) {  // change LIB to lib by Prabashi
 			output(member + "\n");
 		}		
 	}
 
 
 
-	private static void BORROW_BOOK() {
+	private static void borrowBook() { //Edit Method Name by MP
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void RETURN_BOOK() {
+	private static void returnBook() {//Edit  Method Name Auther Prabashi
 		new ReturnBookUI(new ReturnBookControl()).RuN();		
 	}
 
 
-	private static void FIX_BOOKS() {
-		new FixBookUI(new FixBookControl()).RuN();		
+	private static void fixBooks() {//Edit  Method Name Auther Prabashi
+		new FixBookUI(new FixBookControl()).run();		
 	}
 
 
-	private static void INCREMENT_DATE() {
+	private static void incrementDate() {//Edit  Method Name Auther Prabashi
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			lib.checkCurrentLoans();
+			output(SDF.format(CAL.date()));
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
@@ -180,25 +181,25 @@ public class Main {
 	}
 
 
-	private static void ADD_BOOK() {
+	private static void addBook() {//Edit  Method Name Author Prabashi
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
-		output("\n" + B + "\n");
+		String a = input("Enter author: "); // change A to a by MP
+		String t  = input("Enter title: "); // change T to t by MP
+		String c = input("Enter call number: "); // change c to c  by MP
+		book b = lib.addBook(a, t, c); // change variables by MP
+		output("\n" + b + "\n");
 		
 	}
 
 	
-	private static void ADD_MEMBER() {
+	private static void addMember() {//Edit  Method Name Auther Prabashi
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
-			output("\n" + M + "\n");
+			String ln = input("Enter last name: "); //change variable LN to ln Author Prabashi
+			String fn  = input("Enter first name: "); ////change variable FN to fn Author Prabashi
+			String em = input("Enter email: "); //change variable EM to em Author Prabashi
+			int pn = Integer.valueOf(input("Enter phone number: ")).intValue(); //change variable PN to pn Author Prabashi
+			Member m = lib.addMember(ln, fn, em, pn); //change variable Author Prabashi
+			output("\n" + m + "\n");
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid phone number\n");
@@ -209,7 +210,7 @@ public class Main {
 
 	private static String input(String prompt) {
 		System.out.print(prompt);
-		return IN.nextLine();
+		return in.nextLine();
 	}
 	
 	

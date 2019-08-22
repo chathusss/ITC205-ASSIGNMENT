@@ -1,100 +1,126 @@
 import java.util.Scanner;
 
-
 public class PayFineUI {
 
+	// UI_STATE changed to UiState - Sathsarani
+	public static enum UiState {
+		INITIALISED, READY, PAYING, COMPLETED, CANCELLED
+	};
 
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-
-	private PayFineControl CoNtRoL;
+	// CoNtRoL changed to payFineControl - Sathsarani
+	private PayFineControl payFineControl;
 	private Scanner input;
-	private UI_STATE StAtE;
+	// StAtE changed to state - Sathsarani
+	private UiState state;
 
-	
 	public PayFineUI(PayFineControl control) {
-		this.CoNtRoL = control;
+		// CoNtRoL changed to payFineControl - Sathsarani
+		this.payFineControl = control;
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
-		control.Set_UI(this);
-	}
-	
-	
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+		// UI_STATE changed to UiState and StAtE changed to state - Sathsarani
+		state = UiState.INITIALISED;
+
+		// changed from Set_UI to setUi - Sathsarani
+		control.setUi(this);
 	}
 
+	// UI_STATE changed to UiState and Set_State to setState- Sathsarani
+	public void setState(UiState state) {
+		// StAtE changed to state - Sathsarani
+		this.state = state;
+	}
 
-	public void RuN() {
-		output("Pay Fine Use Case UI\n");
-		
+	// changed RuN to run
+	public void run() {
+		getOutput("Pay Fine Use Case UI\n");
+
 		while (true) {
-			
-			switch (StAtE) {
-			
+			// StAtE changed to state - Sathsarani
+			switch (state) {
+
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+
+				// Mem_Str to memStr and input changed to setIutput - Sathsarani
+				String memStr = setIutput("Swipe member card (press <enter> to cancel): ");
+
+				// Mem_Str to memStr - Sathsarani
+				if (memStr.length() == 0) {
+					// CoNtRoL changed to payFineControl and CaNcEl to isCancel- Sathsarani
+					payFineControl.isCancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.Card_Swiped(Member_ID);
-				}
-				catch (NumberFormatException e) {
-					output("Invalid memberId");
+					// Mem_Str to memStr and Member_ID to memberId - Sathsarani
+					int memberId = Integer.valueOf(memStr).intValue();
+					// CoNtRoL changed to payFineControl and Member_ID to memberId and Card_Swiped
+					// to isCardSwiped - Sathsarani
+					payFineControl.isCardSwiped(memberId);
+				} catch (NumberFormatException e) {
+					// Output changed to getOutput - Sathsarani
+					getOutput("Invalid memberId");
 				}
 				break;
-				
+
 			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+				// AmouNT to amount - Sathsarani
+				double amount = 0;
+
+				// Amt_Str to amtStr and input changed to setIutput - Sathsarani- Sathsarani
+				String amtStr = setIutput("Enter amount (<Enter> cancels) : ");
+
+				// Amt_Str to amtStr - Sathsarani
+				if (amtStr.length() == 0) {
+					// CoNtRoL changed to payFineControl and CaNcEl to isCancel- Sathsarani
+					payFineControl.isCancel();
 					break;
 				}
 				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+					// Amt_Str to amtStr - Sathsarani
+					amount = Double.valueOf(amtStr).doubleValue();
+				} catch (NumberFormatException e) {
 				}
-				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
-					output("Amount must be positive");
+				// AmouNT to amount - Sathsarani
+				if (amount <= 0) {
+					getOutput("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				// CoNtRoL changed to payFineControl and AmouNT to amount and PaY_FiNe changed to is isPayFine - Sathsarani
+				payFineControl.isPayFine(amount);
 				break;
-								
+
 			case CANCELLED:
-				output("Pay Fine process cancelled");
+				// Output changed to getOutput - Sathsarani
+				getOutput("Pay Fine process cancelled");
 				return;
-			
+
 			case COMPLETED:
-				output("Pay Fine process complete");
+				// Output changed to getOutput - Sathsarani
+				getOutput("Pay Fine process complete");
 				return;
-			
+
 			default:
-				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
-			
-			}		
-		}		
+				// Output changed to getOutput - Sathsarani
+				getOutput("Unhandled state");
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);
+
+			}
+		}
 	}
 
 	
-	private String input(String prompt) {
+	private String setIutput(String prompt) {// input changed to setIutput - Sathsarani
 		System.out.print(prompt);
 		return input.nextLine();
-	}	
-		
-		
-	private void output(Object object) {
-		System.out.println(object);
-	}	
-			
-
-	public void DiSplAY(Object object) {
-		output(object);
 	}
 
+	// Output changed to getOutput - Sathsarani
+	private void getOutput(Object object) {
+		System.out.println(object);
+	}
+
+	// DiSplAY changed to getDisplay - Sathsarani
+	public void getDisplay(Object object) {
+		getOutput(object);
+	}
 
 }
