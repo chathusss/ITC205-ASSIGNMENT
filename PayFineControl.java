@@ -3,8 +3,8 @@ public class PayFineControl {
 	// changed Ui to payFineUi - Sathsarani
 	private PayFineUI payFineUi;
 
-	// changed CONTROL_STATE to ControlState - Sathsarani
-	private enum ControlState {
+	
+	private enum ControlState {// changed CONTROL_STATE to ControlState - Sathsarani
 		INITIALISED, READY, PAYING, COMPLETED, CANCELLED
 	};
 
