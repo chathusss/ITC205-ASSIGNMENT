@@ -6,7 +6,7 @@ public class Main {
 	
 	private static Scanner in; //Change IN to in Author Prabashi
 	private static library lib; // change LIB to lib by Prabashi
-	private static String MENU;
+	private static String menu; //change MENU to menu by Prabashi
 	private static Calendar CAL;
 	private static SimpleDateFormat SDF;
 	
@@ -44,15 +44,15 @@ public class Main {
 			CAL = Calendar.Instance();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (Member m : lib.MEMBERS()) {  // change LIB to lib by Prabashi
+			for (Member m : lib.members()) {  // change LIB to lib by Prabashi
 				output(m);
 			}
 			output(" ");
-			for (book b : lib.BOOKS()) {  // change LIB to lib by Prabashi
+			for (book b : lib.books()) {  // change LIB to lib by Prabashi
 				output(b);
 			}
 						
-			MENU = GetMenu();
+			menu = GetMenu();
 			
 			boolean e = false;
 			
