@@ -1,77 +1,111 @@
 public class ReturnBookControl {
 
-	private ReturnBookUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE sTaTe;
+	// Ui changed to returnBookUi - Sathsarani
+	private ReturnBookUI returnBookUi;
+
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
-	
+	private enum ControlState {// CONTROL_STATE changed to ControlState - Sathsarani
+		INITIALISED, READY, INSPECTING
+	};
+
+	// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+	private ControlState state;
+	// lIbRaRy changed to library - Sathsarani
+	private library library;
+	// CurrENT_loan changed to currrentLoan - Sathsarani
+	private loan currrentLoan;
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		// lIbRaRy changed to library
+		this.library = library.INSTANCE();
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		state = ControlState.INITIALISED;
 	}
-	
-	
-	public void Set_UI(ReturnBookUI ui) {
-		if (!sTaTe.equals(CONTROL_STATE.INITIALISED)) {
+
+	//Set_UI changed to setUi - Sathsarani
+	public void setUi(ReturnBookUI ui) {
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		if (!state.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
-		}	
-		this.Ui = ui;
-		ui.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;		
+		}
+		// Ui changed to returnBookUi - Sathsarani
+		this.returnBookUi = ui;
+		//Set_State changed to setState - Sathsarani
+		ui.setState(ReturnBookUI.UiState.READY);
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		state = ControlState.READY;
 	}
 
-
-	public void Book_scanned(int Book_ID) {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+	// Book_scanned changed to isBookScanned and Book_ID to bookID- Sathsarani
+	public void isBookScanned(int bookID) {
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
-		}	
-		book CUR_book = lIbRaRy.Book(Book_ID);
-		
-		if (CUR_book == null) {
-			Ui.display("Invalid Book Id");
-			return;
 		}
-		if (!CUR_book.On_loan()) {
-			Ui.display("Book has not been borrowed");
-			return;
-		}		
-		CurrENT_loan = lIbRaRy.LOAN_BY_BOOK_ID(Book_ID);	
-		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.OVer_Due()) {
-			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(CurrENT_loan);
-		}
-		Ui.display("Inspecting");
-		Ui.display(CUR_book.toString());
-		Ui.display(CurrENT_loan.toString());
-		
-		if (CurrENT_loan.OVer_Due()) {
-			Ui.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
-		}
-		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
-		sTaTe = CONTROL_STATE.INSPECTING;		
-	}
+		// lIbRaRy changed to library and CUR_book changed to currentBook and Book_ID to bookID-Sathsarani
+		book currentBook = library.Book(bookID);
 
+		if (currentBook == null) {
+			// Ui changed to returnBookUi - Sathsarani
+			returnBookUi.display("Invalid Book Id");
+			return;
+		}
+		if (!currentBook.On_loan()) {
+			// Ui changed to returnBookUi - Sathsarani
+			returnBookUi.display("Book has not been borrowed");
+			return;
+		}
+
+		// lIbRaRy changed to library and  CurrENT_loan changed to currrentLoan and Book_ID to bookID- Sathsarani
+		currrentLoan = library.LOAN_BY_BOOK_ID(bookID);
+
+		// Over_Due_Fine changed to overDueFine - Sathsarani
+		double overDueFine = 0.0;
+		//CurrENT_loan changed to currrentLoan - Sathsarani
+		if (currrentLoan.OVer_Due()) {
+			// lIbRaRy changed to library and CurrENT_loan changed to currrentLoan and Over_Due_Fine changed to overDueFine - Sathsarani
+			overDueFine = library.CalculateOverDueFine(currrentLoan);
+		}
+		// Ui changed to returnBookUi - Sathsarani
+		returnBookUi.display("Inspecting");
+		// Ui changed to returnBookUi - Sathsarani
+		returnBookUi.display(currentBook.toString());
+		// Ui changed to returnBookUi and CurrENT_loan changed to currrentLoan - Sathsarani
+		returnBookUi.display(currrentLoan.toString());
+
+		//CurrENT_loan changed to currrentLoan - Sathsarani
+		if (currrentLoan.OVer_Due()) {
+			// Ui changed to returnBookUi and Over_Due_Fine changed to overDueFine - Sathsarani
+			returnBookUi.display(String.format("\nOverdue fine : $%.2f", overDueFine));
+		}
+		// Ui changed to returnBookUi - Sathsarani
+		returnBookUi.Set_State(ReturnBookUI.UiState.INSPECTING);
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		state = ControlState.INSPECTING;
+	}
 
 	public void Scanning_Complete() {
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
-		}	
-		Ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
+		}
+		// Ui changed to returnBookUi - Sathsarani
+		returnBookUi.Set_State(ReturnBookUI.UiState.COMPLETED);
 	}
-
 
 	public void Discharge_loan(boolean isDamaged) {
-		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		if (!state.equals(ControlState.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
-		}	
-		lIbRaRy.Discharge_loan(CurrENT_loan, isDamaged);
-		CurrENT_loan = null;
-		Ui.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;				
+		}
+		// lIbRaRy changed to library and CurrENT_loan changed to currrentLoan - Sathsarani
+		library.Discharge_loan(currrentLoan, isDamaged);
+		//CurrENT_loan changed to currrentLoan - Sathsarani
+		currrentLoan = null;
+		// Ui changed to returnBookUi - Sathsarani
+		returnBookUi.Set_State(ReturnBookUI.UiState.READY);
+		// CONTROL_STATE changed to ControlState and sTaTe changed to state- Sathsarani
+		state = ControlState.READY;
 	}
-
 
 }
