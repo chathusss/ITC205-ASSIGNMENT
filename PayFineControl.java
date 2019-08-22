@@ -1,6 +1,6 @@
 public class PayFineControl {
 
-	// changed Ui to payFineUi - Sathsarani
+	// changed the class name Ui to the class name payFineUi - Sathsarani
 	private PayFineUI payFineUi;
 
 	
