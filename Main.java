@@ -183,11 +183,11 @@ public class Main {
 
 	private static void addBook() {//Edit  Method Name Author Prabashi
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
-		output("\n" + B + "\n");
+		String a = input("Enter author: "); // change A to a by MP
+		String t  = input("Enter title: "); // change T to t by MP
+		String c = input("Enter call number: "); // change c to c  by MP
+		book b = LIB.Add_book(a, t, c); // change variables by MP
+		output("\n" + b + "\n");
 		
 	}
 
