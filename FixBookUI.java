@@ -31,8 +31,8 @@ public class FixBookUI {
 			switch (state) {
 			
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
+				String bookStr = input("Scan Book (<enter> completes): "); // change Book_STR to bookStr Author Prabashi
+				if (bookStr.length() == 0) { // change Book_STR to bookStr Author Prabashi
 					control.scanningComplete();//fixed method name //change CoNtRoL to control Author Prabashi
 				}
 				else {
@@ -47,9 +47,9 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");
+				String ans = input("Fix Book? (Y/N) : "); // change AnS to ans Author Prabashi
 				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) {
+				if (ans.toUpperCase().equals("Y")) { // change AnS to ans Author Prabashi
 					FiX = true;
 				}
 				control.fixBook(FiX); //change CoNtRoL to control Author Prabashi
