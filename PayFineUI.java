@@ -107,8 +107,8 @@ public class PayFineUI {
 		}
 	}
 
-	// input changed to setIutput - Sathsarani
-	private String setIutput(String prompt) {
+	
+	private String setIutput(String prompt) {// input changed to setIutput - Sathsarani
 		System.out.print(prompt);
 		return input.nextLine();
 	}
