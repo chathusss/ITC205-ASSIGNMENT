@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 	
 	private static Scanner in; //Change IN to in Author Prabashi
-	private static library LIB;
+	private static library lib; // change LIB to lib by Prabashi
 	private static String MENU;
 	private static Calendar CAL;
 	private static SimpleDateFormat SDF;
@@ -40,15 +40,15 @@ public class Main {
 	public static void main(String[] args) {		
 		try {			
 			in = new Scanner(System.in); //Change IN to in Author Prabashi
-			LIB = library.INSTANCE();
+			lib = library.INSTANCE(); // change LIB to lib by Prabashi
 			CAL = Calendar.Instance();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (Member m : LIB.MEMBERS()) {
+			for (Member m : lib.MEMBERS()) {  // change LIB to lib by Prabashi
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book b : lib.BOOKS()) {  // change LIB to lib by Prabashi
 				output(b);
 			}
 						
@@ -128,7 +128,7 @@ public class Main {
 
 	private static void currentLoans() {//Fix CURRENT_LOAN to CurrentLoans by MP
 		output("");
-		for (Loan loan : LIB.CurrentLoans()) {
+		for (Loan loan : lib.currentLoans()) {  // change LIB to lib by Prabashi
 			output(loan + "\n");
 		}		
 	}
@@ -137,7 +137,7 @@ public class Main {
 
 	private static void books() { //change method name BOOKS to Books by MP
 		output("");
-		for (book book : LIB.BOOKS()) {
+		for (book book : lib.books()) {  // change LIB to lib by Prabashi
 			output(book + "\n");
 		}		
 	}
@@ -146,7 +146,7 @@ public class Main {
 
 	private static void members() {//Edit Method Name MEMBERS to members by MP
 		output("");
-		for (Member member : LIB.MEMBERS()) {
+		for (Member member : lib.members()) {  // change LIB to lib by Prabashi
 			output(member + "\n");
 		}		
 	}
@@ -172,7 +172,7 @@ public class Main {
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
+			lib.checkCurrentLoans();
 			output(SDF.format(CAL.date()));
 			
 		} catch (NumberFormatException e) {
@@ -186,7 +186,7 @@ public class Main {
 		String a = input("Enter author: "); // change A to a by MP
 		String t  = input("Enter title: "); // change T to t by MP
 		String c = input("Enter call number: "); // change c to c  by MP
-		book b = LIB.Add_book(a, t, c); // change variables by MP
+		book b = lib.addBook(a, t, c); // change variables by MP
 		output("\n" + b + "\n");
 		
 	}
@@ -198,7 +198,7 @@ public class Main {
 			String fn  = input("Enter first name: "); ////change variable FN to fn Author Prabashi
 			String em = input("Enter email: "); //change variable EM to em Author Prabashi
 			int pn = Integer.valueOf(input("Enter phone number: ")).intValue(); //change variable PN to pn Author Prabashi
-			Member m = LIB.Add_mem(ln, fn, em, pn); //change variable Author Prabashi
+			Member m = lib.addMember(ln, fn, em, pn); //change variable Author Prabashi
 			output("\n" + m + "\n");
 			
 		} catch (NumberFormatException e) {
