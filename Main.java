@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner in; Change IN to in Author Prabashi
+	private static Scanner in; //Change IN to in Author Prabashi
 	private static library LIB;
 	private static String MENU;
 	private static Calendar CAL;
@@ -39,7 +39,7 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			in = new Scanner(System.in);
+			in = new Scanner(System.in); //Change IN to in Author Prabashi
 			LIB = library.INSTANCE();
 			CAL = Calendar.Instance();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
@@ -181,7 +181,7 @@ public class Main {
 	}
 
 
-	private static void addBook() {//Edit  Method Name Auther Prabashi
+	private static void addBook() {//Edit  Method Name Author Prabashi
 		
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
@@ -194,11 +194,11 @@ public class Main {
 	
 	private static void addMember() {//Edit  Method Name Auther Prabashi
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			Member M = LIB.Add_mem(LN, FN, EM, PN);
+			String ln = input("Enter last name: "); //change variable LN to ln Author Prabashi
+			String fn  = input("Enter first name: "); ////change variable FN to fn Author Prabashi
+			String em = input("Enter email: "); //change variable EM to em Author Prabashi
+			int pn = Integer.valueOf(input("Enter phone number: ")).intValue(); //change variable PN to pn Author Prabashi
+			Member M = LIB.Add_mem(ln, fn, em, pn); //change variable Author Prabashi
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
