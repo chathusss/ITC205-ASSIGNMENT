@@ -26,13 +26,13 @@ public class Loan implements Serializable {//Edit Class Name
 	public void checkOverDue() {
 		if (state == LoanState.CURRENT &&
 			Calendar.Instance().date().after(date)) {//Edit Calling Method Name
-			this.state = LoanState.OVER_DUE;			
+			this.state = LoanState.overDue;			
 		}
 	}
 
 	
 	public boolean overDue() {
-		return state == LoanState.OVER_DUE;
+		return state == LoanState.overDue;
 	}
 
 	
