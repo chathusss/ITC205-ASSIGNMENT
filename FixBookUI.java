@@ -75,7 +75,7 @@ public class FixBookUI {
 	}	
 		
 		
-	private void output(Object object) {  //change variable name
+	private void output(Object object) {  //change variable name // fixed variable name
 		System.out.println(object);
 	}
 	
