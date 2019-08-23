@@ -6,8 +6,8 @@ public class Main {
 	
 	private static Scanner in; //Change IN to in Author Prabashi
 	private static library lib; // change LIB to lib by Prabashi
-	private static String MENU;
-	private static Calendar CAL;
+	private static String menu; //change MENU to menu by Prabashi
+	private static Calendar cal; // change CAL to cal By Prabashi
 	private static SimpleDateFormat SDF;
 	
 	
@@ -41,18 +41,18 @@ public class Main {
 		try {			
 			in = new Scanner(System.in); //Change IN to in Author Prabashi
 			lib = library.INSTANCE(); // change LIB to lib by Prabashi
-			CAL = Calendar.Instance();
+			cal = Calendar.Instance();
 			SDF = new SimpleDateFormat("dd/MM/yyyy");
 	
-			for (Member m : lib.MEMBERS()) {  // change LIB to lib by Prabashi
+			for (Member m : lib.members()) {  // change LIB to lib by Prabashi
 				output(m);
 			}
 			output(" ");
-			for (book b : lib.BOOKS()) {  // change LIB to lib by Prabashi
+			for (book b : lib.books()) {  // change LIB to lib by Prabashi
 				output(b);
 			}
 						
-			MENU = GetMenu();
+			menu = GetMenu();
 			
 			boolean e = false;
 			
@@ -171,7 +171,7 @@ public class Main {
 	private static void incrementDate() {//Edit  Method Name Auther Prabashi
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
+			cal.incrementDate(days); change CAL to cal By Prabashi
 			lib.checkCurrentLoans();
 			output(SDF.format(CAL.date()));
 			
