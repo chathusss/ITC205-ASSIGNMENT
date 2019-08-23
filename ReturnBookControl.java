@@ -3,8 +3,8 @@ public class ReturnBookControl {
 	// Ui changed to returnBookUi - Sathsarani
 	private ReturnBookUI returnBookUi;
 
-	
-	private enum ControlState {// CONTROL_STATE changed to ControlState - Sathsarani
+	// CONTROL_STATE changed to ControlState - Sathsarani
+	private enum ControlState {
 		INITIALISED, READY, INSPECTING
 	};
 
