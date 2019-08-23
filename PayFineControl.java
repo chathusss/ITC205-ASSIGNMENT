@@ -1,10 +1,10 @@
 public class PayFineControl {
 
-	// changed the class name Ui to the class name payFineUi - Sathsarani
+	// changed Ui to payFineUi - Sathsarani
 	private PayFineUI payFineUi;
 
-	
-	private enum ControlState {// changed CONTROL_STATE to ControlState - Sathsarani
+	// changed CONTROL_STATE to ControlState - Sathsarani
+	private enum ControlState {
 		INITIALISED, READY, PAYING, COMPLETED, CANCELLED
 	};
 
@@ -55,7 +55,7 @@ public class PayFineControl {
 		if (memeber1 == null) {
 			// changed Ui to payFineUi and changed DiSplAY to isDisplay assuming that it
 			// would be same as the team member who edit this class - Sathsarani
-			payFineUi.getDisplay("Invalid Member Id");
+			payFineUi.isDisplay("Invalid Member Id");
 			return;
 		}
 
@@ -93,7 +93,7 @@ public class PayFineControl {
 			// changed Ui to payFineUi and changed DiSplAY to isDisplay assuming that it
 			// would be same as the team member who edit this class - Sathsarani -
 			// Sathsarani
-			payFineUi.getDisplay(String.format("Change: $%.2f", change));
+			payFineUi.isDisplay(String.format("Change: $%.2f", change));
 		}
 		// changed Ui to payFineUi and changed MeMbEr to member1 and changed DiSplAY to
 		// isDisplay assuming that it would be same as the team member who edit this
