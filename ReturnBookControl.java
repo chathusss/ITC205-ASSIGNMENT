@@ -13,7 +13,7 @@ public class ReturnBookControl {
 	// lIbRaRy changed to library - Sathsarani
 	private library library;
 	// CurrENT_loan changed to currrentLoan - Sathsarani
-	private loan currrentLoan;
+	private Loan currrentLoan;
 
 	public ReturnBookControl() {
 		// lIbRaRy changed to library
@@ -62,7 +62,7 @@ public class ReturnBookControl {
 		// Over_Due_Fine changed to overDueFine - Sathsarani
 		double overDueFine = 0.0;
 		//CurrENT_loan changed to currrentLoan - Sathsarani
-		if (currrentLoan.OVer_Due()) {
+		if (currrentLoan.overDue()) {
 			// lIbRaRy changed to library and CurrENT_loan changed to currrentLoan and Over_Due_Fine changed to overDueFine - Sathsarani
 			overDueFine = library.CalculateOverDueFine(currrentLoan);
 		}
@@ -74,7 +74,7 @@ public class ReturnBookControl {
 		returnBookUi.display(currrentLoan.toString());
 
 		//CurrENT_loan changed to currrentLoan - Sathsarani
-		if (currrentLoan.OVer_Due()) {
+		if (currrentLoan.overDue()) {
 			// Ui changed to returnBookUi and Over_Due_Fine changed to overDueFine - Sathsarani
 			returnBookUi.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
