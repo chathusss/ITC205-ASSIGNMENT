@@ -52,7 +52,7 @@ public class library implements Serializable {
 		if (self == null) { // SeLf to self
 			Path path= Paths.get(libraryFile);	 // PATH  to path		
 			if (Files.exists(path)) {	 // PATH to path
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+				try (ObjectInputStream lif = new ObjectInputStream(new FileInputStream(libraryFile));) { // LiF to lif
 			    
 					self = (library) lif.readObject(); // SeLf to self , LiF to lif
 					Calendar.instance().setDate(self.loanDate); // INSTANCE to instance , Set_dATE to setDate , SeLf to self, LOAN_DATE to loanDate
@@ -123,9 +123,9 @@ public class library implements Serializable {
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
+	public member addMember(String lastName, String firstName, String email, int phoneNo) {	// Add_mem to addMember	
 		member member = new member(lastName, firstName, email, phoneNo, nextMid()); // NextMID to nextMid
-		MEMBERS.put(member.getId(), member); // GeT_ID to getId		
+		member.put(member.getId(), member); // GeT_ID to getId	, MEMBERS to member	
 		return member;
 	}
 
@@ -180,7 +180,7 @@ public class library implements Serializable {
 		Date dueDate = Calendar.instance().Due_Date(loanPeriod); // INSTANCE to instance
 		loan loan = new loan(nextId(), book, member, dueDate); // NextLID to nextId
 		member.takeOutLoan(loan); // Take_Out_Loan to takeOutLoan
-		book.Borrow();
+		book.borrow(); // Borrow to borrow
 		loans.put(loan.id(), loan);// LOANS to loans , ID to id
 		currentLoans.put(book.id(), loan); // CURRENT_LOANS to currentLoans , ID to id
 		return loan;
@@ -205,7 +205,7 @@ public class library implements Serializable {
 	}
 
 
-	public void dischageLoan(loan currentLoan, boolean isDamaged) { // Discharge_loan to dischargeLoan
+	public void dischargeLoan(loan currentLoan, boolean isDamaged) { // Discharge_loan to dischargeLoan
 		member member = currentLoan.member(); // Member to member()
 		book book  = currentLoan.book(); // Book to book()
 		
