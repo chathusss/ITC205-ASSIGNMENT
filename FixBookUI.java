@@ -5,25 +5,25 @@ public class FixBookUI {
 
 	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };//change enum UI_STATE to UiState
 
-	private FixBookControl control;//change CoNtRoL to control
+	private FixBookControl control;//change CoNtRoL to control Author Prabashi
 	private Scanner input;
-	private UiState state;//change UI_STATE to UiState by MP
+	private UiState state;//change UI_STATE to UiState by MP Author Prabashi
 
 	
-	public FixBookUI(FixBookControl control) {
-		this.control = control;
+	public FixBookUI(FixBookControl control) { //change CoNtRoL to control Author Prabashi
+		this.control = control; //change CoNtRoL to control Author Prabashi
 		input = new Scanner(System.in);
-		state = UiState.INITIALISED;
-		control.setUi(this);
+		state = UiState.INITIALISED; //change UI_STATE to UiState by MP Author Prabashi
+		control.setUi(this); //change CoNtRoL to control Author Prabashi
 	}
 
 
-	public void SetState(UiState state) {
+	public void setState(UiState state) { //Fix Methods Name by Prabashi //change UI_STATE to UiState by MP Author Prabashi
 		this.state = state;
 	}
 
 	
-	public void Run() {
+	public void run() {//Fix Methods Name by Prabashi
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
@@ -31,14 +31,14 @@ public class FixBookUI {
 			switch (state) {
 			
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					control.ScanningComplete();//fixed method name
+				String bookStr = input("Scan Book (<enter> completes): "); // change Book_STR to bookStr Author Prabashi
+				if (bookStr.length() == 0) { // change Book_STR to bookStr Author Prabashi
+					control.scanningComplete();//fixed method name //change CoNtRoL to control Author Prabashi
 				}
 				else {
 					try {
 						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						control.BookScanned(Book_ID);
+						control.bookScanned(Book_ID); //change CoNtRoL to control Author Prabashi
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -47,12 +47,12 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");
+				String ans = input("Fix Book? (Y/N) : "); // change AnS to ans Author Prabashi
 				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) {
+				if (ans.toUpperCase().equals("Y")) { // change AnS to ans Author Prabashi
 					FiX = true;
 				}
-				control.FixBook(FiX);
+				control.fixBook(FiX); //change CoNtRoL to control Author Prabashi
 				break;
 								
 			case COMPLETED:
@@ -69,7 +69,7 @@ public class FixBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String input(String prompt) {//Fix Methods Name by Prabashi
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
@@ -80,7 +80,7 @@ public class FixBookUI {
 	}
 	
 
-	public void Display(Object object) {
+	public void display(Object object) {//Fix Methods Name by Prabashi
 		output(object);
 	}
 	
