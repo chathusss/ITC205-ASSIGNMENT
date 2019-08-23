@@ -25,7 +25,7 @@ public class FixBookControl {
 
 
 	public void bookScanned(int bookId) {
-		if (!state.equals(ControlState.)) { //Change StAtE to state Author Prabashi change CONTROL_STATE to ControlState
+		if (!state.equals(ControlState.READY)) { //Change StAtE to state Author Prabashi change CONTROL_STATE to ControlState
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
 		curBook = lib.Book(bookId);// Change LIB to lib Author Prabashi  // Change cur_Book  Author Prabashi
